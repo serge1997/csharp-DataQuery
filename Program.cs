@@ -15,11 +15,14 @@ using (HttpClient client = new HttpClient())
                       select music.Name;
 
 
-        LinqQuery.FilterByGenre("hip hop", musics);
+        //LinqQuery.FilterByGenre("hip hop", musics);
         //Console.WriteLine(response);
+        //LinqQuery.ListAllGenre(musics);
+        LinqQuery.FindByArtistName("Post Malone", musics);
 
 
-    }catch(Exception ex)
+    }
+    catch(Exception ex)
     {
 
         Console.WriteLine(ex.Message); 

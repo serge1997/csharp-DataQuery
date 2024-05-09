@@ -27,4 +27,39 @@ internal class LinqQuery
         }
 
     }
+
+    public static void ListAllGenre(List<Musics> musics)
+    {
+        if ( musics?.Count() > 0 )
+        {
+            var genres = musics.OrderBy(genre => genre.Genre)
+                .Select(genre => genre.Genre)
+                .Distinct()
+                .ToList();
+
+
+            foreach (var item in genres)
+            {
+                Console.WriteLine($"- Genre: {item}");
+            }
+        }
+    }
+
+    public static void FindByArtistName(string name, List<Musics> musics)
+    {
+        if ( musics?.Count() > 0 )
+        {
+            var artist = musics.OrderBy(title => title.Name)
+                .Select(title => title)
+                .Where(title => title.Artist == name)
+                .DistinctBy(title => title.Name)
+                .ToList();
+
+            foreach ( var art in artist )
+            {
+                Console.WriteLine($"Artist: {art.Artist}");
+                Console.WriteLine($"Title: {art.Name}");
+            }
+        }
+    }
 }
